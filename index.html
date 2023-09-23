@@ -11,40 +11,166 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@700&display=swap" rel="stylesheet">
-    <title>美레시피</title>
+    <!-- JS -->
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+
+
+    <title>美Recipe</title>
     <style>
-        * { 
+        *{ 
             margin:0; font-family: 'Noto Sans KR', sans-serif;
         }
+        #reg, #log, #recipeSearch, #howMuch, #history, #admin {
+            cursor: pointer;
+        }
+
+        img {
+            display: block;
+        }
+
+        hr {
+            margin: 50px 0;
+        }
+
+        
     </style>
 </head>
 <body>
-    <div class="d-flex justify-content-center mb-5 pb-5" style="border-bottom: 2px solid #FAEAC3;">
-        <img src="img/meRecipe.png" alt="mos" style="width:80%; max-width: 1600px;">
+    <div class="d-flex justify-content-center mb-5">
+        <img src="img/meRecipe.png" alt="meRecipe" style="width:80%; max-width: 1600px;">
     </div>
-
-    <div class="p-4 justify-content-center" style="margin-top: 40px; text-align: center;">
-        <h1 class="mb-5">프로젝트 소개</h1>
-        <div class="pb-5" style="border-bottom: 2px solid #FAEAC3;">
+    <div class="p-4 justify-content-center " style="margin-top: 100px; text-align: center;">
+        <h1 class="mt-5 pt-5" style="border-top: 2px solid #FAEAC3;">프로젝트 소개</h1>
+        <div style="border-bottom: 2px solid #FAEAC3;">
             <p class="mt-5 fs-5">기간 : 2023.06.04~06.10</p>
+            <p class="fs-5">목적 : 레시피를 만들고 싶은 양 만큼 재료가 변경되어 나오기를 원했음</p>
             <p class="fs-5">개발툴 : 자바11</p>
             <p class="fs-5">개발 인원 : 1명</p>
-            <div class="mt-5">
-                <p class="fs-5">구현기능</p>
-                <p class="fs-5 mb-2" style="margin:0;">1. 재료 조회</p>
-                <p class="fs-5 mb-2" style="margin:0;">2. 몇 인분 기준으로 재료와 양 조회</p>
-                <p class="fs-5 mb-2" style="margin:0;">3. 레시피 검색기록 조회</p>
-                <p class="fs-5 mb-2" style="margin:0;">4. 관리자 페이지 - 새로운 레시피 등록</p>
-            </div>
         </div>
-        <div class="mb-5" style="margin-top: 150px;">
+        <div class="mb-5 text-center" style="margin-top: 150px;">
             <h1 class="mb-5">프로젝트 설계</h1>
-            <img src="img/meR_diagram.PNG" alt="mos_diagram">
+            <img src="img/meR_diagram.PNG" alt="mos_diagram" class="mx-auto">
         </div>
         <div>
-            <p class="fs-3 mb-5 pt-5">구현기능</p>
-            <p class="fs-5 text-center" style="margin:0;">1. 재료 조회</p>
+            <p class="h1 mb-5 pt-5">구현기능</p>
+
+            <p class="h5 text-center mb-3" id="reg" onClick="here(event)">1. 회원가입<i class="fas fa-mouse-pointer" id="rclick" style="margin-left: 10px;"></i></p>
+            <div id="register" style="display: none;">
+                <div style="width:900px; margin: 0 auto;">
+                    <h5 class="mt-5 text-center" style="color:green">meRecipe.java</h5>
+                    <img src="img/r1.PNG" alt="r1" class="mt-5">
+                    <hr> 
+                    <h5 class="mt-5 text-center pt-5" style="color:green">meRecipe.java</h5>
+                    <img src="img/c2.PNG" alt="c2" class="mt-5">
+            
+                    <h5 class="mt-5 pt-5 text-center" style="color:green">Member.java</h5>
+                    <img src="img/c3.PNG" alt="c3" class="mt-5">
+                    <img src="img/c4.PNG" alt="c4" class="mt-5">
+                </div>
+                <button class="btn btn-lg btn-primary mb-5" id="regclose" onClick="jeob(event)">접기</button>
+            </div>
+
+            <p class="h5 text-center mb-3" id="log" onClick="here(event)">2.로그인<i class="fas fa-mouse-pointer" id="lclick" style="margin-left: 10px;"></i></p>
+            <div id="login" style="display: none;">
+                <div style="width:900px; margin: 0 auto;">
+                    <h5 class="mt-5 text-center" style="color:green">meRecipe.java</h5>
+                    <img src="img/r2.PNG" alt="r2" class="mt-5">
+                    <hr> 
+                    <h5 class="mt-5 text-center" style="color:green">meRecipe.java</h5>
+                    <img src="img/c5.PNG" alt="c5" class="mt-5">
+
+                    <h5 class="mt-5 text-center pt-5" style="color:green">Member.java</h5>
+                    <img src="img/c5.PNG" alt="c5" class="mt-5">
+                    <img src="img/c6.PNG" alt="c6" class="mt-5">
+                    <img src="img/c7.PNG" alt="c8" class="mt-5">
+                </div>
+                <button class="btn btn-lg btn-primary mb-5" id="logclose" onClick="jeob(event)">접기</button>
+            </div>
+
+            <p class="h5 text-center mb-3" id="recipeSearch" onClick="here(event)">3. 레시피 조회<i class="fas fa-mouse-pointer" id="rsclick" style="margin-left: 10px;"></i></p>
+            <div id="search" style="display: none;">
+                <div style="width:900px; margin: 0 auto;">
+                    <h5 class="mt-5 text-center" style="color:green">meRecipe.java</h5>
+                    <img src="img/r3.PNG" alt="r3" class="mt-5">
+                    <img src="img/r4.PNG" alt="r4" class="pb-5 mt-5">
+                    <hr> 
+                    <h5 class="mt-5 text-center pt-5" style="color:green">meRecipe.java</h5>
+                    <img src="img/c8.PNG" alt="c8" class="mt-5">
+            
+                    <h5 class="mt-5 pt-5 text-center" style="color:green">SearchRecipe.java</h5>
+                    <img src="img/c9.PNG" alt="c9" class="mt-5">
+                    <img src="img/c10.PNG" alt="c10" class="mt-5">
+                    
+                    <h5 class="mt-5 pt-5 text-center" style="color:green">SearchHistory.java</h5>
+                    <img src="img/c10-1.PNG" alt="c10-1" class="mt-5">
+                    <img src="img/c10-2.PNG" alt="c10-2" class="mt-5">
+                </div>
+                <button class="btn btn-lg btn-primary mb-5" id="searchclose" onClick="jeob(event)">접기</button>
+            </div>
+            <p class="h5 text-center mb-3" id="history" onClick="here(event)">4.레시피 검색기록 조회<i class="fas fa-mouse-pointer ms-2" id="hclick" style="margin-left: 10px;"></i></p>
+            <div id="histo" style="display: none;">
+                <div style="width:900px; margin: 0 auto;">
+                    <h5 class="mt-5 text-center" style="color:green">meRecipe.java</h5>
+                    <img src="img/r5.PNG" alt="r5" class="pb-5 mt-5">
+                    <hr>
+
+                    <h5 class="mt-5 text-center pt-5" style="color:green">meRecipe.java</h5>
+                    <img src="img/c11.PNG" alt="c11" class="mt-5">
+                    <h5 class="mt-5 text-center pt-5" style="color:green">SearchHistory.java</h5>
+                    <img src="img/c12.PNG" alt="c12" class="mt-5">
+
+                </div>
+                <button class="btn btn-lg btn-primary mb-5" id="histoclose" onClick="jeob(event)">접기</button>
+            </div>
+
+            <p class="h5 text-center" id="admin" onClick="here(event)">5. 관리자 페이지 - 새로운 레시피 등록<i class="fas fa-mouse-pointer ms-2" id="aclick" style="margin-left: 10px;"></i></p>
+            <div id="adminP" style="display: none;">
+                <div style="width:900px; margin: 0 auto;">
+                    <h5 class="mt-5 text-center" style="color:green">meRecipe.java</h5>
+                    <img src="img/r6.PNG" alt="r6" class="pb-5">
+                    <img src="img/r7.PNG" alt="r7" class="pb-5">
+                    <img src="img/r8.PNG" alt="r8" class="pb-5">
+
+                    <hr>
+                    <h5 class="mt-5 text-center pt-5" style="color:green">meRecipe.java</h5>
+                    <img src="img/c13.PNG" alt="c13" class="mt-5">
+                    <img src="img/c14.PNG" alt="c14" class="mt-5">
+                    <h5 class="mt-5 text-center pt-5" style="color:green">Food.java</h5>
+                    <img src="img/c16.PNG" alt="c16" class="mt-5">
+                    <img src="img/c15.PNG" alt="c15" class="mt-5">
+                </div>
+                <button class="btn btn-lg btn-primary mb-5" id="adminclose" onClick="jeob(event)">접기</button>
+            </div>
+        </div>
+        <div>
+            <a href="https://github.com/RaysonJoanna/me-Recipe" class="d-flex justify-content-center mt-5"><img src="img/mrCode.png" alt="보러가기" style="width:40%; max-width: 800px;"></a>
         </div>
     </div>
+    <script>
+        function here(e) {
+            let id = e.target.id;
+            let div = $(`#${id}`).next()[0].id;
+            let pointer = $(`#${id}`).children().first()[0].id;
+
+            if($(`#${div}`).css('display') == 'none') {
+                $(`#${div}`).show();
+                $(`#${pointer}`).css("color","#c7c7c7");
+            } else {
+                $(`#${div}`).hide();
+                $(`#${pointer}`).css("color","#1E3050");
+            }
+        }
+
+        function jeob(e){
+            let self = e.target.id;
+            let mother = $(`#${self}`).parent()[0].id;
+            let aunt = $(`#${mother}`).prev()[0].id;
+            console.log(aunt);
+
+
+            $(`#${self}`).parent().css('display','none');
+            $(`#${aunt}`).children().css("color","#1E3050");
+        }
+    </script>
 </body>
 </html>
